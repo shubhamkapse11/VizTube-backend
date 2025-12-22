@@ -1,0 +1,7 @@
+what are higher order function in js . promise is is higher ordefr or not ?
+what is contructor functions   and promises (asyncHandler.js)
+what is bson data vs json data  and  how mongodb uses this .
+mongoose middleware types  pre, post etc  and plugin .
+mongoose aggregation  
+bcrypt vs bcryptjs  and what to use and why ?  ||   jwt tocken use cryptography algorithm  
+custom methods  in  mongoose ( user-module)
