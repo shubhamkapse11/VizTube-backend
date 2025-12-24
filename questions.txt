@@ -6,3 +6,22 @@ mongoose aggregation
 bcrypt vs bcryptjs  and what to use and why ?  ||   jwt tocken use cryptography algorithm  
 custom methods  in  mongoose ( user-module)
 why we use two step  for uploading file on cloude and use first local server ?
+what is http vs https  ( simple is https shares data in the normal tet and https securely transfer data in encrypted form )
+
+most common Header 
+- accept: application/json                              &     -content-type
+- user -Agent (from which source is request is coming)  &     -catch-control
+- Authorization  & cookie                               &     -cookie
+  cors
+-Access-control-allow-origin  , -Access-control-allow-credential , -Access-control-allow-method
+
+security 
+-cross-origin-embedder-policy , -cross-origin-opener-policy ,  -cross-securityr-policy  , x-xss-protection
+
+methods
+ - get , head , options , trace , delete , put , post , patch 
+
+ Https status
+ -1xx information , 2xx success , 3xx redirection  , 4xx client error , 5xx server error
+
+ in backend how many type you get  data for ex. req.body(form & json) , url etc ;

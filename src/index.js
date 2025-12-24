@@ -1,19 +1,17 @@
 // require('dotenv').config({path : './env'})
 // import mongoose from "mongoose";
 // import {DB_NAME} from "./constants";
-import dotenv from "dotenv";
+
+import "dotenv/config";
 import connectDB from "./db/db.js";
-import express  from 'express';
-// dotenv.config({ path: "./env" });
-dotenv.config();   // will automatically load ".env"
-const app = express();
+import { app } from "./app.js";
 
 connectDB().then(()=>{
     app.on("error" , (err)=> {
         console.log("error on indexjs in app" , err)
     })
-    app.listen(process.env.PORT || 8000 , ()=>{
-        console.log("db connected sucessfully")
+    app.listen(process.env.PORT ||8000 , ()=>{
+        console.log("db connected sucessfully", "listening to my app" , process.env.PORT || 8000)
     })
 }).catch((err) => {
   console.error("Failed to connect to the database!! :", err);
