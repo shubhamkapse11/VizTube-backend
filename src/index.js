@@ -11,7 +11,7 @@ connectDB().then(()=>{
         console.log("error on indexjs in app" , err)
     })
     app.listen(process.env.PORT ||8000 , ()=>{
-        console.log("db connected sucessfully", "listening to my app" , process.env.PORT || 8000)
+        console.log("db connected successfully", "listening to my app" , process.env.PORT || 8000)
     })
 }).catch((err) => {
   console.error("Failed to connect to the database!! :", err);

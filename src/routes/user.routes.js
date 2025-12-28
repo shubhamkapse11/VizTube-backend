@@ -4,7 +4,7 @@ import { resgisterUser, logOutUser, loginUser
    updateAccountdetails,updateUserAvatar
   ,updateUserCoverImg,getWatchHistory,getUserChannelProfile
 } from "../controllers/user.controller.js";
-import { upload } from "../middlewares/multer.midleware.js";
+import { upload } from "../middlewares/multer.middleware.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 const router = Router();
