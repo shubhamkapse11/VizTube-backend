@@ -361,7 +361,7 @@ const getUserChannelProfile = asyncHandler(async (req, res) => {
         }
       }
     },
-    { //values you wa to provide  only provide nessary and required values
+    { //values you wan to provide  only provide nessary and required values
       $project: {
         fullname: 1,
         username: 1,
@@ -434,5 +434,6 @@ const getWatchHistory = asyncHandler(async (req, res) => {
 
 export {
   getUserChannelProfile, resgisterUser, loginUser, logOutUser,
-  refreshAccessToken, getCurrentUser, changeCurrentPassword, updateAccountdetails, updateUserAvatar, updateUserCoverImg, getWatchHistory
+  refreshAccessToken, getCurrentUser, changeCurrentPassword,
+  updateAccountdetails, updateUserAvatar, updateUserCoverImg, getWatchHistory
 };
