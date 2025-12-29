@@ -5,20 +5,20 @@ const videoSchema = new mongoose.Schema(
     {
 
         videoFile: {
-            type: string,
+            type: String,
             required: true,
 
         },
         thumbnail: {
-            type: string,
+            type: String,
             required: true
         },
         title: {
-            type: string,
+            type: String,
             required: true
         },
         description: {
-            type: string,
+            type: String,
             required: true
         },
         duration: {
