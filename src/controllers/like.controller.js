@@ -79,50 +79,64 @@ const toggleTweetLike = asyncHandler(async (req, res) => {
 
 const getLikedVideos = asyncHandler(async (req, res) => {
     //TODO: get all liked videos
-    if (!req.user?._id) {
-        throw new ApiError(401, "Unauthorized")
-    }
-const likedVideos = await Like.aggregate([
+    const likedVideos = await Like.aggregate([
+        {
+            $match: {
+                likedBy: new mongoose.Types.ObjectId(req.user._id),
+                video: { $exists: true, $ne: null }
+            }
+        },
+        {
+            $lookup: {
+                from: "videos",
+                localField: "video",
+                foreignField: "_id",
+                as: "video",
+                pipeline: [
+                    {
+                        $lookup: {
+                            from: "users",
+                            localField: "owner",
+                            foreignField: "_id",
+                            as: "owner",
+                            pipeline: [
+                                {
+                                    $project: {
+                                        fullname: 1,
+                                        username: 1,
+                                        avatar: 1
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        $addFields: {
+                            owner: {
+                                $first: "$owner"
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            $unwind: "$video"
+        },
+        {
+            $sort: {
+                createdAt: -1
+            }
+        },
+        {
+            $project: {
+                _id: 0,
+                video: 1
+            }
+        }
+    ]);
 
-  // 1️⃣ Filter likes:
-  // - Only likes done by the current logged-in user
-  // - Ensure the like is related to a video (not null / exists)
-  {
-    $match: {
-      likedBy: mongoose.Types.ObjectId(req.user._id),
-      video: { $exists: true, $ne: null }
-    }
-  },
-
-  // 2️⃣ Join Like collection with Videos collection
-  // - Match Like.video with Videos._id
-  // - Store matched video document inside "videoDetails" array
-  {
-    $lookup: {
-      from: "videos",
-      localField: "video",
-      foreignField: "_id",
-      as: "videoDetails"
-    }
-  },
-
-  // 3️⃣ Convert videoDetails array into a single object
-  // - Removes array wrapper from lookup result
-  {
-    $unwind: "$videoDetails"
-  },
-
-  // 4️⃣ Replace the whole document with videoDetails
-  // - Removes Like data
-  // - Final output becomes only video document
-  {
-    $replaceRoot: { newRoot: "$videoDetails" }
-  }
-
-]);
-
-
-    return res.status(200).json(new ApiResponse(200, likedVideos, "Fetched liked videos successfully"))
+    return res.status(200).json(new ApiResponse(200, likedVideos, "Liked videos fetched successfully"));
 })
 
 export {
