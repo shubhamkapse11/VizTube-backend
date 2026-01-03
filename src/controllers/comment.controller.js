@@ -1,8 +1,9 @@
-import mongoose, { isValidObjectId } from "mongoose"
-import { Comment } from "../models/comment.model.js"
-import { ApiError } from "../utils/ApiError.js"
-import { ApiResponse } from "../utils/ApiResponse.js"
-import { asyncHandler } from "../utils/asyncHandler.js"
+const mongoose = require("mongoose");
+const { isValidObjectId } = require("mongoose");
+const { Comment } = require("../models/comment.model.js");
+const { ApiError } = require("../utils/ApiError.js");
+const { ApiResponse } = require("../utils/ApiResponse.js");
+const { asyncHandler } = require("../utils/asyncHandler.js");
 
 const getVideoComments = asyncHandler(async (req, res) => {
     //TODO: get all comments for a video
@@ -118,7 +119,7 @@ const deleteComment = asyncHandler(async (req, res) => {
     return res.status(200).json(new ApiResponse(200, deleteComment, "success"))
 })
 
-export {
+module.exports = {
     getVideoComments,
     addComment,
     updateComment,

@@ -1,1 +1,1 @@
-export const DB_NAME = "yotube_db";
+module.exports = { DB_NAME: "yotube_db" };

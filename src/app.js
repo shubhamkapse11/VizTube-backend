@@ -1,7 +1,7 @@
-import express from 'express';
-import dotenv from 'dotenv';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
+const express = require('express');
+const dotenv = require('dotenv');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
@@ -20,15 +20,15 @@ app.use(cookieParser())
 
 // import routes 
 
-import userRouter from './routes/user.routes.js'
-import healthcheckRouter from './routes/healthcheck.routes.js'
-import tweetRouter from './routes/tweet.routes.js'
-import subscriptionRouter from './routes/subscription.routes.js'
-import videoRouter from './routes/video.routes.js'
-import commentRouter from './routes/comment.routes.js'
-import likeRouter from './routes/like.routes.js'
-import playlistRouter from './routes/playlist.routes.js'
-import dashboardRouter from './routes/dashboard.routes.js'
+const userRouter = require('./routes/user.routes.js')
+const healthcheckRouter = require('./routes/healthcheck.routes.js')
+const tweetRouter = require('./routes/tweet.routes.js')
+const subscriptionRouter = require('./routes/subscription.routes.js')
+const videoRouter = require('./routes/video.routes.js')
+const commentRouter = require('./routes/comment.routes.js')
+const likeRouter = require('./routes/like.routes.js')
+const playlistRouter = require('./routes/playlist.routes.js')
+const dashboardRouter = require('./routes/dashboard.routes.js')
 
 // Routes Declareation
 app.use("/api/v1/healthcheck", healthcheckRouter)
@@ -43,4 +43,4 @@ app.use("/api/v1/dashboard", dashboardRouter)
 
 
 
-export { app }
+module.exports = { app }

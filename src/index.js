@@ -1,10 +1,6 @@
-// require('dotenv').config({path : './env'})
-// import mongoose from "mongoose";
-// import {DB_NAME} from "./constants";
-
-import "dotenv/config";
-import connectDB from "./db/db.js";
-import { app } from "./app.js";
+require("dotenv/config");
+const connectDB = require("./db/db.js");
+const { app } = require("./app.js");
 
 connectDB().then(()=>{
     app.on("error" , (err)=> {

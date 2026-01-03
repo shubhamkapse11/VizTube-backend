@@ -1,6 +1,6 @@
-import { ApiError } from "../utils/ApiError.js"
-import { ApiResponse } from "../utils/ApiResponse.js"
-import { asyncHandler } from "../utils/asyncHandler.js"
+const { ApiError } = require("../utils/ApiError.js");
+const { ApiResponse } = require("../utils/ApiResponse.js");
+const { asyncHandler } = require("../utils/asyncHandler.js");
 
 
 const healthcheck = asyncHandler(async (req, res) => {
@@ -8,6 +8,6 @@ const healthcheck = asyncHandler(async (req, res) => {
     return res.status(200).json(new ApiResponse(200, {}, "OK"))
 })
 
-export {
+module.exports = {
     healthcheck
 }

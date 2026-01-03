@@ -1,5 +1,5 @@
-import mongoose from "mongoose";
-import { Schema } from "mongoose";
+const mongoose = require("mongoose");
+const { Schema } = require("mongoose");
 
 const likeSchema = new mongoose.Schema({
     video: {
@@ -20,4 +20,4 @@ const likeSchema = new mongoose.Schema({
     }
 }, { timestamps: true })
 
-export const Like = mongoose.model("Like", likeSchema);
+module.exports = { Like: mongoose.model("Like", likeSchema) };

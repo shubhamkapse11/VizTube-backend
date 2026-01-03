@@ -1,9 +1,10 @@
-import { asyncHandler } from "../utils/asyncHandler.js";
-import { ApiError } from "../utils/ApiError.js";
-import { User } from "../models/user.model.js";
-import { uploadOnCloudinary } from "../utils/cloudinary.js";
-import { ApiResponse } from "../utils/ApiResponse.js";
-import jwt from "jsonwebtoken";
+const { asyncHandler } = require("../utils/asyncHandler.js");
+const { ApiError } = require("../utils/ApiError.js");
+const { User } = require("../models/user.model.js");
+const { uploadOnCloudinary } = require("../utils/cloudinary.js");
+const { ApiResponse } = require("../utils/ApiResponse.js");
+const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
 
 const generateAccessTokenAndRefreshTokens = async (userId) => {
   try {
@@ -432,7 +433,7 @@ const getWatchHistory = asyncHandler(async (req, res) => {
 
 })
 
-export {
+module.exports = {
   getUserChannelProfile, resgisterUser, loginUser, logOutUser,
   refreshAccessToken, getCurrentUser, changeCurrentPassword,
   updateAccountdetails, updateUserAvatar, updateUserCoverImg, getWatchHistory
