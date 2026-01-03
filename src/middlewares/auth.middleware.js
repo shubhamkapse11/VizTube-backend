@@ -1,9 +1,9 @@
-import { ApiError } from "../utils/ApiError.js";
-import { asyncHandler } from "../utils/asyncHandler.js";
-import jwt from "jsonwebtoken";
-import { User } from "../models/user.model.js";
+const { ApiError } = require("../utils/ApiError.js");
+const { asyncHandler } = require("../utils/asyncHandler.js");
+const jwt = require("jsonwebtoken");
+const { User } = require("../models/user.model.js");
 
-export const verifyJWT = asyncHandler(async (req, res, next) => {
+const verifyJWT = asyncHandler(async (req, res, next) => {
   try {
     const token =
       req.cookies?.accessToken ||
@@ -26,3 +26,5 @@ export const verifyJWT = asyncHandler(async (req, res, next) => {
     throw new ApiError(401, err.message || "invalid access token");
   }
 });
+
+module.exports = { verifyJWT };

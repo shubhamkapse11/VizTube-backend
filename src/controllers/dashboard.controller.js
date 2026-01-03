@@ -1,10 +1,10 @@
-import mongoose, { Mongoose } from "mongoose"
-import { Video } from "../models/video.model.js"
-import { Subscription } from "../models/subscription.model.js"
-import { Like } from "../models/like.model.js"
-import { ApiError } from "../utils/ApiError.js"
-import { ApiResponse } from "../utils/ApiResponse.js"
-import { asyncHandler } from "../utils/asyncHandler.js"
+const mongoose = require("mongoose");
+const { Video } = require("../models/video.model.js");
+const { Subscription } = require("../models/subscription.model.js");
+const { Like } = require("../models/like.model.js");
+const { ApiError } = require("../utils/ApiError.js");
+const { ApiResponse } = require("../utils/ApiResponse.js");
+const { asyncHandler } = require("../utils/asyncHandler.js");
 
 const getChannelStats = asyncHandler(async (req, res) => {
     // TODO: Get the channel stats like total video views, total subscribers, total videos, total likes etc.
@@ -76,7 +76,7 @@ const getChannelVideos = asyncHandler(async (req, res) => {
     return res.status(200).json(new ApiResponse(200, videos, "Channel videos fetched successfully"));
 })
 
-export {
+module.exports = {
     getChannelStats,
     getChannelVideos
 }

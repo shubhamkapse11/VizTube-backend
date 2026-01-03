@@ -1,11 +1,11 @@
-import { Router } from "express";
-import { resgisterUser, logOutUser, loginUser 
+const { Router } = require("express");
+const { resgisterUser, logOutUser, loginUser 
   ,refreshAccessToken ,changeCurrentPassword, getCurrentUser,
    updateAccountdetails,updateUserAvatar
   ,updateUserCoverImg,getWatchHistory,getUserChannelProfile
-} from "../controllers/user.controller.js";
-import { upload } from "../middlewares/multer.middleware.js";
-import { verifyJWT } from "../middlewares/auth.middleware.js";
+} = require("../controllers/user.controller.js");
+const { upload } = require("../middlewares/multer.middleware.js");
+const { verifyJWT } = require("../middlewares/auth.middleware.js");
 
 const router = Router();
 
@@ -30,4 +30,4 @@ router.route("/c/:username").get(verifyJWT, getUserChannelProfile);
 router.route("/history").get(verifyJWT,getWatchHistory);
 
 
-export default router;
+module.exports = router;

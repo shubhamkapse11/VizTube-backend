@@ -1,10 +1,11 @@
-import mongoose, { isValidObjectId } from "mongoose"
-import { Video } from "../models/video.model.js"
-import { User } from "../models/user.model.js"
-import { ApiError } from "../utils/ApiError.js"
-import { ApiResponse } from "../utils/ApiResponse.js"
-import { asyncHandler } from "../utils/asyncHandler.js"
-import { uploadOnCloudinary } from "../utils/cloudinary.js"
+const mongoose = require("mongoose");
+const { isValidObjectId } = require("mongoose");
+const { Video } = require("../models/video.model.js");
+const { User } = require("../models/user.model.js");
+const { ApiError } = require("../utils/ApiError.js");
+const { ApiResponse } = require("../utils/ApiResponse.js");
+const { asyncHandler } = require("../utils/asyncHandler.js");
+const { uploadOnCloudinary } = require("../utils/cloudinary.js");
 
 
 const getAllVideos = asyncHandler(async (req, res) => {
@@ -203,7 +204,7 @@ const togglePublishStatus = asyncHandler(async (req, res) => {
     return res.status(200).json(new ApiResponse(200, updatedVideo, "Publish status toggled successfully"))
 })
 
-export {
+module.exports = {
     getAllVideos,
     publishAVideo,
     getVideoById,
