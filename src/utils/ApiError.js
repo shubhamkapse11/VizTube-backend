@@ -22,4 +22,4 @@ class ApiError  extends Error {
     // NCd4iypzJCtGPAIV - secure
 
 }
-    export {ApiError}
+    module.exports = {ApiError}

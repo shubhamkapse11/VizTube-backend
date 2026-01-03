@@ -1,5 +1,5 @@
-import { Router } from 'express';
-import {
+const { Router } = require('express');
+const {
     addVideoToPlaylist,
     createPlaylist,
     deletePlaylist,
@@ -7,8 +7,8 @@ import {
     getUserPlaylists,
     removeVideoFromPlaylist,
     updatePlaylist,
-} from "../controllers/playlist.controller.js"
-import {verifyJWT} from "../middlewares/auth.middleware.js"
+} = require("../controllers/playlist.controller.js")
+const {verifyJWT} = require("../middlewares/auth.middleware.js")
 
 const router = Router();
 
@@ -27,4 +27,4 @@ router.route("/remove/:videoId/:playlistId").patch(removeVideoFromPlaylist);
 
 router.route("/user/:userId").get(getUserPlaylists);
 
-export default router
+module.exports = router

@@ -1,6 +1,7 @@
-import mongoose, { Schema } from "mongoose";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+const mongoose = require("mongoose");
+const { Schema } = require("mongoose");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 // we use pre-hook to encrypt and save before saving to db
 
@@ -95,4 +96,4 @@ userSchema.methods.generateRefreshToken = function () {
 }
 
 
-export const User = mongoose.model("User", userSchema);
+module.exports = { User: mongoose.model("User", userSchema) };
